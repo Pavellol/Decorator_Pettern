@@ -12,3 +12,4 @@ D:\Programming\.NET\Patterns\Decorator\Decorator_HomeWork\ConsoleApp1\ConsoleApp
 D:\Programming\.NET\Patterns\Decorator\Decorator_HomeWork\ConsoleApp1\ConsoleApp1\obj\Debug\net7.0\ConsoleApp1.pdb
 D:\Programming\.NET\Patterns\Decorator\Decorator_HomeWork\ConsoleApp1\ConsoleApp1\obj\Debug\net7.0\ConsoleApp1.genruntimeconfig.cache
 D:\Programming\.NET\Patterns\Decorator\Decorator_HomeWork\ConsoleApp1\ConsoleApp1\obj\Debug\net7.0\ref\ConsoleApp1.dll
+D:\Programming\.NET\Patterns\Decorator\Decorator_HomeWork\ConsoleApp1\ConsoleApp1\obj\Debug\net7.0\ConsoleApp1.sourcelink.json

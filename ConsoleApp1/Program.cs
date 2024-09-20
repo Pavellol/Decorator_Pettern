@@ -2,35 +2,27 @@
 {
     static void Main(string[] args)
     {
-        Pencil pencil1 = new PencilRed();
-        pencil1 = new PencilDrive(pencil1);
-        Console.WriteLine("{0}", pencil1.Name);
-        Console.WriteLine("Цена: {0}", pencil1.Do());
+        Pencil pencil1 = new PencilCar();
+        
+        Console.WriteLine("{0}", pencil1.Name);        
+        Console.WriteLine("Цена: {0}", pencil1.GetCost());
+        Console.WriteLine();
 
-        Pencil pencil2 = new PencilBlack();
-        pencil2 = new PencilFly(pencil2);
+        Pencil pencil2 = new PencilHelicopter();
+
         Console.WriteLine("{0}", pencil2.Name);
-        Console.WriteLine("Цена: {0}", pencil2.Do());
-        /*
-                Pizza pizza1 = new ItalianPizza();
-                pizza1 = new TomatoPizza(pizza1); // итальянская пицца с томатами
-                Console.WriteLine("Название: {0}", pizza1.Name);
-                Console.WriteLine("Цена: {0}", pizza1.GetCost());
+        Console.WriteLine("Цена: {0}", pencil2.GetCost());
+        Console.WriteLine();
 
-                Pizza pizza2 = new ItalianPizza();
-                pizza2 = new CheesePizza(pizza2);// итальянская пиццы с сыром
-                Console.WriteLine("Название: {0}", pizza2.Name);
-                Console.WriteLine("Цена: {0}", pizza2.GetCost());
+        Pencil pencil3 = new PencilPlane();
 
-                Pizza pizza3 = new BulgerianPizza();
-                pizza3 = new TomatoPizza(pizza3);
-                pizza3 = new CheesePizza(pizza3);// болгарская пиццы с томатами и сыром
-                Console.WriteLine("Название: {0}", pizza3.Name);
-                Console.WriteLine("Цена: {0}", pizza3.GetCost());*/
+        Console.WriteLine("{0}", pencil3.Name);
+        Console.WriteLine("Цена: {0}", pencil3.GetCost());
+        Console.WriteLine();
+       
         Console.ReadLine();
     }
 }
-
 abstract class Pencil
 {
     public Pencil(string n)
@@ -38,59 +30,55 @@ abstract class Pencil
         this.Name = n;
     }
     public string Name { get; protected set; }
-    public abstract int Do();
+    public abstract int GetCost();
 }
-class PencilRed : Pencil
-{    
-    public PencilRed() : base("Красная ручка")
-    {
-    }
-
-    public override int Do()
-    {
-        return 15;
-    }
-}
-class PencilBlack : Pencil
+class PencilCar : Pencil
 {
-    public PencilBlack() : base("Черная ручка")
+    public PencilCar() : base("Ручка на колесах")
     {
+        Drive();
     }
 
-    public override int Do()
+    public override int GetCost()
     {
-        return 10;
+        return 200;
+    }
+
+    public void Drive()
+    {
+        Console.WriteLine("Ручка теперь с клесиками, поехали ....!");
     }
 }
-abstract class PencilDecorator : Pencil
+class PencilHelicopter : Pencil
 {
-    protected Pencil pencil;
-    public PencilDecorator(string n, Pencil pencil) : base(n)
+    public PencilHelicopter() : base("Ручка теперь имеет несущий винт")
     {
-        this.pencil = pencil;
+        FlyUp();
+    }
+
+    public override int GetCost()
+    {
+        return 300;
+    }
+
+    public void FlyUp()
+    {
+        Console.WriteLine("Ручка теперь можел летать вверх, вниз. Ура!");
     }
 }
-class PencilDrive : PencilDecorator
+class PencilPlane : Pencil
 {
-    public PencilDrive(Pencil pencil) : base(pencil.Name + " ездит на колесиках", pencil)
+    public PencilPlane() : base("Ручка теперь имеет крылья")
     {
+        Fly();
     }
 
-    public override int Do()
+    public override int GetCost()
     {
-        return pencil.Do() + 10;
+        return 400;
+    }
+    private void Fly()
+    {
+        Console.WriteLine("Ручка теперь летать в доль горизонта. Юху!");
     }
 }
-class PencilFly : PencilDecorator
-{
-    public PencilFly(Pencil pencil) : base(pencil.Name + " летает как самолет", pencil)
-    {
-    }
-
-    public override int Do()
-    {
-        return pencil.Do() + 10000;
-    }
-}
-
- 
